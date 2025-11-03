@@ -1,25 +1,23 @@
-const apiKey="";
-document.getElementById("buscar").addEventListener("click", async () => {
-  const ciudad = document.getElementById("ciudad").value.trim();
-  if (!ciudad) return alert("");
+document.getElementById("BuscarRaza").addEventListener("click", async () => {
+  const raza = document.getElementById("razaInput").value.toLowerCase().trim();
+
+  if (!raza) {
+    document.getElementById("resultado").innerHTML = "⚠️ Por favor, escribe una raza.";
+    return;
+  }
 
   try {
-    const res = await fetch(
-      `=${ciudad}=${apiKey}`
-    );
+    const res = await fetch(`https://dog.ceo/api/breed/${raza}/images/random`);
     const data = await res.json();
 
-    if (data.cod !== 200) {
-      document.getElementById("resultado").innerHTML = "";
-      return;
+    if (data.status === "success") {
+      document.getElementById("resultado").innerHTML = `
+        <h2>🐶 ¡Aquí está tu perro de raza ${raza}!</h2>
+        <img src="${data.message}" alt="Perro de raza ${raza}" width="300">
+      `;
+    } else {
+      document.getElementById("resultado").innerHTML = "⚠️ Raza no encontrada, prueba otra.";
     }
-
-    document.getElementById("resultado").innerHTML = /*llama el texto el innerHTML*/` 
-      <h2>${}, ${}</h2>
-      <p> : ${}°C</p>
-      <p> : ${} km/h</p>
-      <p>: ${}</p>
-    `;
   } catch (error) {
     document.getElementById("resultado").innerHTML = "⚠️ Error al conectar con la API";
   }
