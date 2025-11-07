@@ -1,38 +1,40 @@
 //ejercicio uno calculadora el usuario puede ingresar numeros 
-/*function ejerciciocalculadora() {
-let numero1= parseFloat (prompt("ingrese el primer numero"));
-while(isNaN(numero1)){
-    numero1=parseFloat(prompt("tenes que ingresar un numero no una letra 😡"));
+function ejerciciocalculadora() {
+  let numero1 = parseFloat(prompt("Ingrese el primer número:"));
+  while (isNaN(numero1)) {
+    numero1 = parseFloat(prompt("Tenés que ingresar un número, no una letra 😡"));
+  }
 
-}
-let numero2= parseFloat (prompt("ingrese el segundo numero"));
-while(isNaN(numero2)){
-    numero2=parseFloat(prompt("tenes que ingresar un numero no una letra 😡"));
-}
-let operacion = prompt("ingrese la operacion(+,-,*,/):");
-while(operacion!=="+" && operacion!=="-" && operacion!=="*" && operacion!=="/"){
-    operacion=prompt("tenes que ingresar solamente +,-,*,/ 🤬");
+  let numero2 = parseFloat(prompt("Ingrese el segundo número:"));
+  while (isNaN(numero2)) {
+    numero2 = parseFloat(prompt("Tenés que ingresar un número, no una letra 😡"));
+  }
 
-}
-let resultado;//sin resultado el usuario dira el resultado"let resultado"
-if (operacion==="+") {
-    resultado= numero1+numero2;
-} else if (operacion==="-"){
-    resultado=numero1-numero2;
-}else if (operacion==="*"){
-resultado=numero1*numero2;
-}else if (operacion==="/"){
-resultado=numero2!==0? numero1/numero2:"no se puede dividir por cero";
-}else{
-    resultado="Operacion no valida";
-}
-console.log( `el resultado es:${resultado}`);
+  let operacion = prompt("Ingrese la operación (+, -, *, /):");
+  while (operacion !== "+" && operacion !== "-" && operacion !== "*" && operacion !== "/") {
+    operacion = prompt("Tenés que ingresar solamente +, -, *, / 🤬");
+  }
 
-}
+  let resultado;
 
-/*
+  if (operacion === "+") {
+    resultado = numero1 + numero2;
+  } else if (operacion === "-") {
+    resultado = numero1 - numero2;
+  } else if (operacion === "*") {
+    resultado = numero1 * numero2;
+  } else if (operacion === "/") {
+    resultado = numero2 !== 0 ? numero1 / numero2 : "No se puede dividir por cero";
+  } else {
+    resultado = "Operación no válida";
+  }
+
+  console.log(`El resultado es: ${resultado}`);
+}
+ejerciciocalculadora();
+
+
 //ejercicio dos
-// ejercicio: adivinar un número dentro de un rango elegido por el usuario
 const numeroMin = parseInt(prompt("Ingrese el número mínimo del rango (entero):"), 10);
 const numeroMax = parseInt(prompt("Ingrese el número máximo del rango (entero):"), 10);
 
@@ -40,7 +42,7 @@ if (Number.isNaN(numeroMin) || Number.isNaN(numeroMax) || numeroMin >= numeroMax
     console.log("Rango inválido. Asegúrate de ingresar dos enteros y que el mínimo sea menor que el máximo.");
 } else {
     const numeroSecreto = Math.floor(Math.random() * (numeroMax - numeroMin + 1)) + numeroMin;
-    let intentos = 3; // puedes cambiar la cantidad de intentos si lo deseas
+    let intentos = 3; 
     let adivinado = false;
 
     while (intentos > 0 && !adivinado) {
@@ -69,20 +71,15 @@ if (Number.isNaN(numeroMin) || Number.isNaN(numeroMax) || numeroMin >= numeroMax
 //ejercicio 3 tabla de multiplicar con array
 const numero = parseInt(prompt("ingrese el numero para multiplicar"));
 const limite = parseInt(prompt("ingrese hasta qué número multiplicar"));
-const resultados = []; // Array para guardar los resultados
+const resultados = [];
 
-// Guardamos cada multiplicación en el array
 for (let i = 1; i <= limite; i++) {
     resultados.push({
         multiplicador: i,
         resultado: numero * i
     });
 }
-
-// Mostrar título
 console.log(`Tabla de multiplicar del ${numero}:`);
-
-// Mostrar todos los resultados con for...of
 for (const item of resultados) {
     console.log(`${numero} x ${item.multiplicador} = ${item.resultado}`);
 }
@@ -91,7 +88,6 @@ function celsiusAFahrenheit(celsius) {
     return (celsius * 9/5) + 32;
 
 }
-
 const fahrenheitAcelsius=(fahrenheit)=>((fahrenheit-32)*5)/9;
 let opcion = prompt("elige una opcion:\n1.°c-->°f\n2.°F-->°C\n3.k-->°c");
 if (opcion==="1") {
@@ -122,7 +118,6 @@ function listar() {
     console.log(`${i}. ${item.nombre} (x${item.cantidad}) - $${item.precio}`);
   });
 }
-
 function agregar() {
   const nombre = prompt("Nombre del producto:")?.trim();
   if (!nombre) {
@@ -139,11 +134,10 @@ function agregar() {
     console.log("Cantidad inválida.");
     return;
   }
-  // usar push() para agregar
+
   listaCompras.push({ nombre, precio, cantidad });
   console.log(`${nombre} agregado.`);
 }
-
 function eliminar() {
   listar();
   const idx = parseInt(prompt("Ingrese el índice del producto a eliminar:"), 10);
@@ -151,10 +145,9 @@ function eliminar() {
     console.log("Índice inválido.");
     return;
   }
-  const eliminado = listaCompras.splice(idx, 1)[0]; // splice() elimina y devuelve el elemento
+  const eliminado = listaCompras.splice(idx, 1)[0]; 
   console.log(`${eliminado.nombre} eliminado.`);
 }
-
 function buscar() {
   const texto = prompt("Nombre a buscar:") ?? "";
   const encontrado = listaCompras.find(item => item.nombre.toLowerCase() === texto.toLowerCase());
@@ -196,29 +189,26 @@ function menu() {
     }
   } while (opcion !== "5");
 }
-// Ejecutar menú
-menu();*/
+menu();
 //ejercicio 6 
-/*let agenda = JSON.parse(localStorage.getItem('agenda')) || []; // Cargar datos guardados o array vacío
+let agenda = JSON.parse(localStorage.getItem('agenda')) || []; 
 
 function guardarEnLocalStorage() {
     localStorage.setItem('agenda', JSON.stringify(agenda));
-}*/
-
-/*function agregarContactos(nombre, telefono, email) {
-    const contacto = { nombre, telefono, email };
-    agenda.push(contacto); // Usar push para agregar el contacto
-    console.log(`Contacto agregado: ${nombre}`); // Corregida la plantilla de texto
-    guardarEnLocalStorage(); // Guardar después de agregar
 }
 
+function agregarContactos(nombre, telefono, email) {
+    const contacto = { nombre, telefono, email };
+    agenda.push(contacto); 
+    console.log(`Contacto agregado: ${nombre}`); 
+    guardarEnLocalStorage(); 
+}
 function mostrarAgenda() {
     console.log("Lista de contactos:");
     agenda.forEach(({ nombre, telefono, email }, i) => {
-        console.log(`${i + 1}. ${nombre} - ${telefono} - ${email}`); // Corregida la plantilla de texto
+        console.log(`${i + 1}. ${nombre} - ${telefono} - ${email}`); 
     });
 }
-
 function buscarContacto(nombre) {
     const contacto = agenda.find(
         (c) => c.nombre.toLowerCase() === nombre.toLowerCase()
@@ -229,27 +219,23 @@ function buscarContacto(nombre) {
         console.log("Contacto no encontrado");
     }
 }
-
 function exportarAgenda() {
     const json = JSON.stringify(agenda, null, 2);
     console.log("Agenda en formato JSON:\n", json);
-}*/
-
-/*function eliminarContacto(nombre) {
+}
+function eliminarContacto(nombre) {
     const longitudAnterior = agenda.length;
     agenda = agenda.filter(
         (c) => c.nombre.toLowerCase() !== nombre.toLowerCase()
     );
     
     if (agenda.length < longitudAnterior) {
-        console.log(`Contacto eliminado: ${nombre}`); // Corregida la plantilla de texto
-        guardarEnLocalStorage(); // Guardar después de eliminar
+        console.log(`Contacto eliminado: ${nombre}`); 
+        guardarEnLocalStorage(); 
     } else {
         console.log("Contacto no encontrado");
     }
 }
-
-// Función para probar la agenda
 function probarAgenda() {
     agregarContactos("Juan", "2612345678", "juan@email.com");
     agregarContactos("Maria", "2698765432", "maria@email.com");
@@ -263,12 +249,10 @@ function probarAgenda() {
     
     console.log("\nMostrando agenda actualizada:");
     mostrarAgenda();
-}*/
-
-// Ejecutar prueba
-//probarAgenda();
+}
+probarAgenda();
 // ejercico 7
-/*function actualizarReloj(){
+function actualizarReloj(){
   const ahora=new Date();
   const horas=String(ahora.getHours()).padStart(2,"0");
   const minutos=String(ahora.getMinutes()).padStart(2,"0");
@@ -276,11 +260,7 @@ function probarAgenda() {
   const reloj= document.getElementById("reloj");
   reloj.innerHTML=`${horas}:${minutos}:${segundos}`;
  const hora = parseInt(horas);
-    
-     Remover todas las clases anteriores
     reloj.classList.remove('amanecer', 'manana', 'mediodia', 'tarde', 'atardecer', 'noche');
-    
-    // Agregar la clase según la hora
     if (hora >= 5 && hora < 8) {
         reloj.classList.add('amanecer');
     } else if (hora >= 8 && hora < 12) {
@@ -296,34 +276,93 @@ function probarAgenda() {
     }
 }
 setInterval(actualizarReloj,1000);
-actualizarReloj();*/
+actualizarReloj();
+//ejercico8
+const pantalla = document.getElementById("pantalla");
+const botones = document.querySelectorAll("button");
+botones.forEach((boton) => {
+    boton.addEventListener("click", () => {
+        const valor = boton.textContent;
 
+        if (valor === "C") {
+            pantalla.value = ""; 
+        } else if (valor === "=") {
+            try {
+                pantalla.value = eval(pantalla.value);
+            } catch {
+                pantalla.value = "Error";
+            }
+        } else {
+            pantalla.value += valor;
+        }
+    });
+});
+//ejrcicio 9
+const input = document.getElementById("tarea");
+const boton = document.getElementById("agregar");
+const lista = document.getElementById("lista");
+document.addEventListener("DOMContentLoaded", cargarTareas);
+boton.addEventListener("click", () => {
+  const texto = input.value.trim();
+  if (texto === "") return;
+  agregarTarea(texto);
+  guardarTareas();
+  input.value = "";
+});
+function agregarTarea(texto) {
+  const li = document.createElement("li");
+  li.textContent = texto;
 
+  const btnBorrar = document.createElement("button");
+  btnBorrar.textContent = "❌";
+  btnBorrar.addEventListener("click", () => {
+    li.remove();
+    guardarTareas();
+  });
 
-const apiKey = "c5dba7b153308e7055a2f8f548742c05"; // 🔑 Regístrate en openweathermap.org
+  li.appendChild(btnBorrar);
+  lista.appendChild(li);
+}
+function guardarTareas() {
+  const tareas = [];
+  lista.querySelectorAll("li").forEach(li => {
+    tareas.push(li.firstChild.textContent);
+  });
+  localStorage.setItem("tareas", JSON.stringify(tareas));
+}
+function cargarTareas() {
+  const tareasGuardadas = JSON.parse(localStorage.getItem("tareas")) || [];
+  tareasGuardadas.forEach(agregarTarea);
+}
+//ejercicio 10
+const form = document.getElementById("registroForm");
+const mensaje = document.getElementById("mensaje");
 
-document.getElementById("buscar").addEventListener("click", async () => {
-  const ciudad = document.getElementById("ciudad").value.trim();
-  if (!ciudad) return alert("Ingrese una ciudad master y le aviso si se inunda");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-  try {
-    const res = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&units=metric&lang=es&appid=${apiKey}`
-    );
-    const data = await res.json();
+  const nombre = document.getElementById("nombre").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
 
-    if (data.cod !== 200) {
-      document.getElementById("resultado").innerHTML = "❌ Ciudad no encontrada  🌊";
-      return;
-    }
-
-    document.getElementById("resultado").innerHTML = /*llama el texto el innerHTML*/` 
-      <h2>${data.name}, ${data.sys.country}</h2>
-      <p>🌡 Temp: ${data.main.temp}°C</p>
-      <p>💨 Viento: ${data.wind.speed} km/h</p>
-      <p>🌦 Clima: ${data.weather[0].description}</p>
-    `;
-  } catch (error) {
-    document.getElementById("resultado").innerHTML = "⚠️ Error al conectar con la API";
+  if (!nombre || !email || !password) {
+    mensaje.textContent = "⚠️ Todos los campos son obligatorios.";
+    return;
   }
+
+  if (!email.includes("@") || !email.includes(".")) {
+    mensaje.textContent = "❌ El correo no es válido.";
+    return;
+  }
+
+  if (password.length < 6) {
+    mensaje.textContent = "🔒 La contraseña debe tener al menos 6 caracteres.";
+    return;
+  }
+  localStorage.setItem("nombre", nombre);
+  localStorage.setItem("email", email);
+  mensaje.style.color = "green";
+  mensaje.textContent = "✅ Registro exitoso.";
+  form.reset();
+  alert(`¡Bienvenido ${nombre}! te registraste bien echo master.`);
 });
